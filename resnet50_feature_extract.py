@@ -28,7 +28,10 @@ class resnet50_feature():
             img = F.pil_to_tensor(img)
         img = F.convert_image_dtype(img, torch.float)
         img = F.normalize(img, mean=mean, std=std)
-        batch = self.preprocess(img).unsqueeze(0).to(self.device)
+        batch = img.unsqueeze(0).to(self.device)
+
+        #or VS
+        # batch = self.preprocess(img).unsqueeze(0).to(self.device)
 
         with torch.no_grad():
             prediction = self.model(batch)    
