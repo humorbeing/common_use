@@ -12,6 +12,8 @@ def only_python_files(
     for ext_ in file_extends:
         files = glob.glob(target_folder + f'/**/*.{ext_}', recursive=True)        
         file_list.extend(files)
+
+    print(f'Found {len(file_list)} files.')
     
     for f_ in file_list:
         orginal_folder = f_.split('/')[:-1]
